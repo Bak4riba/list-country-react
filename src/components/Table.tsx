@@ -26,7 +26,7 @@ const TdBody = styled.td`
   border: 1px solid;
   padding:3px;
 `
-export default function DataGridDemo() {  
+export default function ListCountries() {  
 const [countries, setCountries] = useState<any>([])
 
 useEffect(function effectFunction(){
@@ -55,10 +55,8 @@ query Countries{
   consumirAPI(GRAPHQL_ENDPOINT, QueryCountries);
 },[])
 
-console.log(countries)
 
 
-const rows = countries;
   return (
 
 <TableCountry>
@@ -71,7 +69,8 @@ const rows = countries;
   </tr>
 </Thead>
 <tbody>
-  {countries.map((country:any)=>{return <tr> <TdBody>{country.code}</TdBody><TdBody>{country.name}</TdBody><TdBody>{country.capital}</TdBody><TdBody>{country.currency}</TdBody></tr>})}
+  {countries.map((country:any)=>
+  {return <tr><TdBody>{country.code}</TdBody><TdBody>{country.name}</TdBody><TdBody>{country.capital}</TdBody><TdBody>{country.currency}</TdBody></tr>})}
 
 </tbody>
 </TableCountry>
