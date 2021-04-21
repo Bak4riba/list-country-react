@@ -63,12 +63,12 @@ query Countries{
 },[])
 //Ajustando rows
 const columns: GridColDef[] = [
-  { field: 'id', headerName: 'ID', width: 65 },
-  { field: 'name', headerName: 'Country', width: 140 },
-  { field: 'capital', headerName: 'Capital', width: 130 },
-  { field: 'emoji', headerName: 'Flag', width: 100 },
-  { field: 'languages', headerName: 'Languages', width: 160 },
-  { field: 'currency', headerName: 'Currency', width: 130 },
+  { field: 'id', headerName: 'ID', width: 100,flex:1 },
+  { field: 'name', headerName: 'Country', width: 100,flex:1 },
+  { field: 'capital', headerName: 'Capital', width: 100,flex:1 },
+  { field: 'emoji', headerName: 'Flag', width: 100, flex:1 },
+  { field: 'languages', headerName: 'Languages', width: 100,flex:1 },
+  { field: 'currency', headerName: 'Currency', width: 100, flex:1 },
 ];
 var i = 0
 var k = 0
