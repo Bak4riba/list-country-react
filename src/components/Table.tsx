@@ -1,11 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import { DataGrid, GridColDef } from '@material-ui/data-grid';
 import { useState, useEffect} from 'react';
 import styled from 'styled-components';
+import { JsonObjectExpressionStatement } from 'typescript';
 
 const TableCountry = styled.table`
 background-color:red;
 margin:0 auto;
-text-align:center;
+text-align:justify;
 margin-top:15px;
 font-weight:500;
 `
@@ -26,6 +28,7 @@ const TdBody = styled.td`
   border: 1px solid;
   padding:3px;
 `
+
 export default function ListCountries() {  
 const [countries, setCountries] = useState<any>([])
 
@@ -38,6 +41,10 @@ query Countries{
     code:code,
     name:name,
     capital:capital,
+    emoji:emoji,
+    languages{
+      name:name
+    }
     currency:currency,
   }
 }
@@ -54,26 +61,24 @@ query Countries{
   }
   consumirAPI(GRAPHQL_ENDPOINT, QueryCountries);
 },[])
-
-
-
+//Ajustando rows
+const columns: GridColDef[] = [
+  { field: 'id', headerName: 'ID', width: 65 },
+  { field: 'name', headerName: 'Country', width: 140 },
+  { field: 'capital', headerName: 'Capital', width: 130 },
+  { field: 'emoji', headerName: 'Flag', width: 100 },
+  { field: 'languages', headerName: 'Languages', width: 160 },
+  { field: 'currency', headerName: 'Currency', width: 130 },
+];
+var i = 0
+var k = 0
+const languages = countries.map((item:any)=>{return {name:item.languages.map((index :any)=>{return index.name})}})
+const rows:Array<any> = countries.map((c:any)=>{return {id:i++,name:c.name,capital:c.capital,emoji:c.emoji, languages:languages[k++].name,currency:c.currency}})
+console.log(languages)
   return (
-
-<TableCountry>
-  <Thead>
-  <tr>
-    <Theading >Code</Theading>
-    <Theading >Country</Theading>
-    <Theading >Capital</Theading>
-    <Theading >Currency</Theading>
-  </tr>
-</Thead>
-<tbody>
-  {countries.map((country:any)=>
-  {return <tr><TdBody>{country.code}</TdBody><TdBody>{country.name}</TdBody><TdBody>{country.capital}</TdBody><TdBody>{country.currency}</TdBody></tr>})}
-
-</tbody>
-</TableCountry>
+    <div style={{ height: 500, width: '100%' }}>
+      <DataGrid rows={rows} columns={columns} pageSize={50} disableSelectionOnClick={true} checkboxSelection={false} />
+    </div>
   );
 }
 

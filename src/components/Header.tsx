@@ -12,7 +12,7 @@ const HeaderDivContainer = styled.header`
 const Title = styled.h1`
   color:white;
   font-weight:700;
-  font-size:24px;
+  font-size:1.8rem;
   margin:400px;
 `
 export default function Header(){
