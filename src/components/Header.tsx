@@ -13,7 +13,9 @@ const Title = styled.h1`
   color:white;
   font-weight:700;
   font-size:1.8rem;
-  margin:400px;
+  margin:10%;
+  @media(max-width:1200px){
+  }
 `
 export default function Header(){
   return(
