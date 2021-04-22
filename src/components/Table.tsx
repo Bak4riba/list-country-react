@@ -72,11 +72,11 @@ const columns: GridColDef[] = [
 ];
 var i = 0
 var k = 0
+var v = 0
 const languages = countries.map((item:any)=>{return {name:item.languages.map((index :any)=>{return index.name})}})
-const rows:Array<any> = countries.map((c:any)=>{return {id:i++,name:c.name,capital:c.capital,emoji:c.emoji, languages:languages[k++].name,currency:c.currency}})
-console.log(languages)
+const rows:Array<any> = countries.map((c:any)=>{return {id:i,name:c.name,capital:c.capital,emoji:c.emoji, languages:languages[i++].name,currency:c.currency}});
   return (
-    <div style={{ height: 500, width: '100%' }}>
+    <div style={{ height: 700, width: '100%' }}>
       <DataGrid rows={rows} columns={columns} pageSize={50} disableSelectionOnClick={true} checkboxSelection={false} />
     </div>
   );
