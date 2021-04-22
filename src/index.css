@@ -51,3 +51,6 @@ table {
 :root{
   font-family: 'Roboto', sans-serif;
 }
+.MuiDataGrid-colCellWrapper{
+background-color: whitesmoke;
+}
