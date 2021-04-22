@@ -31,7 +31,6 @@ const TdBody = styled.td`
 
 export default function ListCountries() {  
 const [countries, setCountries] = useState<any>([])
-
 useEffect(function effectFunction(){
   const GRAPHQL_ENDPOINT = 'https://countries.trevorblades.com/'
   
@@ -61,7 +60,7 @@ query Countries{
   }
   consumirAPI(GRAPHQL_ENDPOINT, QueryCountries);
 },[])
-//Ajustando rows
+//Setando Columns
 const columns: GridColDef[] = [
   { field: 'id', headerName: 'ID', width: 100,flex:1 },
   { field: 'name', headerName: 'Country', width: 100,flex:1 },
@@ -71,9 +70,9 @@ const columns: GridColDef[] = [
   { field: 'currency', headerName: 'Currency', width: 100, flex:1 },
 ];
 var i = 0
-var k = 0
-var v = 0
+//Setando languages
 const languages = countries.map((item:any)=>{return {name:item.languages.map((index :any)=>{return index.name})}})
+//Setando Rows
 const rows:Array<any> = countries.map((c:any)=>{return {id:i,name:c.name,capital:c.capital,emoji:c.emoji, languages:languages[i++].name,currency:c.currency}});
   return (
     <div style={{ height: 700, width: '100%' }}>
